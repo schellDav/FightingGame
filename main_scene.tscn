@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://pbicge1m5uky"]
+
+[ext_resource type="PackedScene" uid="uid://cux6yydvptql1" path="res://character/samurai_player.tscn" id="1_exbsc"]
+[ext_resource type="Script" path="res://main_scene.gd" id="1_hqf1g"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3aam3"]
+
+[node name="main_scene" type="Node2D"]
+script = ExtResource("1_hqf1g")
+
+[node name="samurai_player" parent="." instance=ExtResource("1_exbsc")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_3aam3")

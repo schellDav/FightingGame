@@ -3,12 +3,34 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+# stats for the character
+var health = 100
+var defense = 10
+var strenght = 10
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var is_attacking: bool = false  # Zustandsvariable für den Angriff
+
 
 func _ready():
 	# Signal für Animation beenden verbinden
 	animated_sprite.connect("frame_changed", Callable(self, "_on_frame_changed"))
+	
+# handles the taken damages
+func damage_taken(damage: int) -> void:
+	# Todo: taken damage should depen on the defense
+	health -= damage # / defense
+
+# handels the given damage
+func damage_given(dmg=0) -> int:
+	# Todo: given damage should depend on strenght
+	var damage = dmg + 10
+	return damage
+
+
+
+
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -49,6 +71,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+
 
 func _on_frame_changed():
 	if animated_sprite.animation == "attack" and animated_sprite.frame == animated_sprite.sprite_frames.get_frame_count("attack") - 1:

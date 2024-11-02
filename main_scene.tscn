@@ -9,6 +9,7 @@
 script = ExtResource("1_hqf1g")
 
 [node name="samurai_player" parent="." instance=ExtResource("1_exbsc")]
+position = Vector2(-2, 75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -16,4 +17,5 @@ zoom = Vector2(2, 2)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 95)
 shape = SubResource("WorldBoundaryShape2D_3aam3")

@@ -1,21 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://pbicge1m5uky"]
+[gd_scene load_steps=5 format=3 uid="uid://pbicge1m5uky"]
 
 [ext_resource type="PackedScene" uid="uid://cux6yydvptql1" path="res://character/samurai_player.tscn" id="1_exbsc"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_hqf1g"]
+[ext_resource type="PackedScene" uid="uid://b75cub0leit1w" path="res://character/samurai_player2.tscn" id="3_fc6d1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3aam3"]
 
 [node name="main_scene" type="Node2D"]
 script = ExtResource("1_hqf1g")
 
+[node name="samurai_player2" parent="." instance=ExtResource("3_fc6d1")]
+position = Vector2(277, 81)
+
 [node name="samurai_player" parent="." instance=ExtResource("1_exbsc")]
-position = Vector2(-2, 75)
+position = Vector2(-276, 82)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="ground" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 position = Vector2(1, 95)
 shape = SubResource("WorldBoundaryShape2D_3aam3")
